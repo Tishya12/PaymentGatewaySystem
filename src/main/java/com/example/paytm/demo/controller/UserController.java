@@ -30,7 +30,7 @@ public class UserController {
 
     @PostMapping(value = "/user")
     public String addUser(@RequestBody UserModel user) {
-        logger.log(Level.INFO, "User Registered at "+ UtilityMethods.get_current_time());
+
         UserModel userEmail = userService.findByEmailID(user.getEmailid());
         List<UserModel> userUsername = userService.findbyUserName(user.getUsername());
         List<UserModel> userMobileNumber = userService.findbyMobileNumber(user.getMobilenumber());
@@ -40,6 +40,7 @@ public class UserController {
         else if (!userUsername.isEmpty() ) {return "User with same userName already exists";}
         else if (!userMobileNumber.isEmpty()) {return "User with same mobileNumber already exists";}
         else  {userService.addUser(user);}
+        logger.log(Level.INFO, "User Registered at "+ UtilityMethods.get_current_time());
         return "User saved";
 
     }
@@ -57,8 +58,9 @@ public class UserController {
 
     @PutMapping(value = "/user/{userId}")
     public String updateUser(@PathVariable("userId") int userId, @RequestBody UserModel user) {
-        logger.log(Level.INFO, "User updated at "+ UtilityMethods.get_current_time());
+
         UserModel existingUser = userService.updateUser(userId,user);
+        logger.log(Level.INFO, "User updated at "+ UtilityMethods.get_current_time());
         if(existingUser == null)
             return "user not existed";
         else return "user data updated";
@@ -66,9 +68,10 @@ public class UserController {
 
     @DeleteMapping(value = "/user/{userId}")
     public String deleteUser(@PathVariable("userId") int userId) {
-        logger.log(Level.INFO, "User deleted at "+ UtilityMethods.get_current_time());
+
         if (userService.getUser(userId) != null) {
             userService.deleteUser(userId);
+            logger.log(Level.INFO, "User deleted at "+ UtilityMethods.get_current_time());
             return "User data deleted";
         } else {
             return "User doesn't exist";
