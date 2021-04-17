@@ -33,8 +33,8 @@ public class WalletModel {
         this.balance = balance;
     }
 
-    //
-//    public void changeBalance(Integer amount) {
-//        this.balance += amount;
-//    }
+
+    public void changeBalance(Integer amount) {
+        this.balance += amount;
+    }
 }
