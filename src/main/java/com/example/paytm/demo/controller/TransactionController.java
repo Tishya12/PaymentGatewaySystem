@@ -1,5 +1,6 @@
 package com.example.paytm.demo.controller;
 
+import com.example.paytm.demo.helpers.UtilityMethods;
 import com.example.paytm.demo.model.TransactionModel;
 import com.example.paytm.demo.model.WalletModel;
 import com.example.paytm.demo.service.TransactionService;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 @RestController
 public class TransactionController {
 
@@ -24,9 +28,11 @@ public class TransactionController {
     TransactionService transactionService;
     @Autowired
     WalletService walletService;
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @GetMapping(value = "/transaction/all")
     public List<TransactionModel> displayAll(){
+        logger.log(Level.INFO, "List of all transaction recieved at "+ UtilityMethods.get_current_time());
         return transactionService.displayall();
     }
 
@@ -54,6 +60,7 @@ public class TransactionController {
                 walletService.addWallet(sender_phone.get(0));    //saving back the data
                 walletService.addWallet(receiver_phone.get(0));
                 transactionService.addtransaction(transactionModel);
+                logger.log(Level.INFO, "Transaction done at "+ UtilityMethods.get_current_time());
                return "transaction successful and saved in the database";
 
             }
