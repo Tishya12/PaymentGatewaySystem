@@ -76,8 +76,8 @@ Validation: TransactionId should exists
 Serve Traffic through load Balancer i.e Nginx.
 ##nginx
 
-All above apis should have JWT authentication
-##jwt
+All above apis have JWT authentication
+##jwt  refer-https://www.javainuse.com/spring/boot-jwt
 
 
 Ingest Data in elasticSearch through Kafka.
