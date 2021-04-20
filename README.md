@@ -88,6 +88,7 @@ Elastic Search
 -Run sudo systemctl start/stop elasticsearch
 -to check status run sudo systemctl status elasticsearch
 -or u can check on localhost:9200
+-http://localhost:9200/_search?&q=*&index=<docname> (to see the database)
 
 Kafka
 -download zookeeper and kafka
