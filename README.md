@@ -75,6 +75,12 @@ Validation: TransactionId should exists
 
 Serve Traffic through load Balancer i.e Nginx.
 ##nginx
+-sudo systemctl status nginx
+To see configuration file
+cd /etc/nginx/sites-available/
+ls
+sudo nano default
+refer-https://www.youtube.com/watch?v=KZFkssRuBLE 
 
 All above apis have JWT authentication
 ##jwt  refer-https://www.javainuse.com/spring/boot-jwt
