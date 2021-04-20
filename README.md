@@ -103,3 +103,4 @@ Kafka
 -start consumer
 ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning
 
+https://www.getpostman.com/collections/349205d05a236c523677 (postman apis)
